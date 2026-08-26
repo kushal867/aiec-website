@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import DestinationLink from "./DestinationLink";
 import { destinations } from "../data/content";
 
 export default function DestinationsPreview() {
@@ -30,9 +31,10 @@ export default function DestinationsPreview() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.4, delay: i * 0.06 }}
             >
-              <Link
+              <DestinationLink
                 to={`/destinations/${d.code}`}
-                data-cursor="view"
+                destination={d.name}
+                flag={d.flag}
                 className="group flex items-center justify-between gap-6 border-b border-line py-6 sm:py-8"
               >
                 <span className="font-display text-3xl font-medium text-paper transition-transform duration-300 group-hover:translate-x-3 sm:text-5xl">
@@ -42,7 +44,7 @@ export default function DestinationsPreview() {
                   {d.universities} universities
                   <span className="text-2xl">{d.flag}</span>
                 </span>
-              </Link>
+              </DestinationLink>
             </motion.div>
           ))}
         </div>

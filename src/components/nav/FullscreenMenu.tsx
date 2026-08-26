@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { routeNav } from "../../data/content";
+import { playPageFlip } from "../../lib/pageFlipSound";
 
 export default function FullscreenMenu({
   open,
@@ -30,7 +31,10 @@ export default function FullscreenMenu({
                 <Link
                   to={l.href}
                   data-cursor="view"
-                  onClick={onClose}
+                  onClick={() => {
+                    playPageFlip();
+                    onClose();
+                  }}
                   className="group flex items-baseline gap-6 border-b border-line py-4 sm:py-6"
                 >
                   <span className="font-display text-sm font-semibold text-lime">
