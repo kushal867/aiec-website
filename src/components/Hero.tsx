@@ -42,7 +42,7 @@ export default function Hero({
                 }}
                 className={`block text-[13vw] sm:text-[9vw] lg:text-[7.5vw] ${
                   i === words.length - 1
-                    ? "ml-[6vw] text-paper/60 sm:ml-[10vw]"
+                    ? "ml-[6vw] text-paper/85 sm:ml-[10vw]"
                     : ""
                 }`}
               >

@@ -15,9 +15,9 @@ export default function FloatingNav({
     <div className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 py-6 sm:px-10 sm:py-8">
       <Link
         to="/"
-        className="font-display text-sm font-bold uppercase tracking-[0.2em] text-paper"
+        className="whitespace-nowrap font-display text-xs font-bold uppercase tracking-[0.15em] text-paper sm:text-sm sm:tracking-[0.2em]"
       >
-        Global Times
+        Global Times Education
       </Link>
 
       <div className="flex items-center gap-4 sm:gap-6">

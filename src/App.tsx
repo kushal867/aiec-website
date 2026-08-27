@@ -9,6 +9,8 @@ import TestComparePage from "./pages/TestComparePage";
 import UniversityFinder from "./pages/UniversityFinder";
 import LearningHub from "./pages/LearningHub";
 import ArticlePage from "./pages/ArticlePage";
+import EventsPage from "./pages/EventsPage";
+import GalleryPage from "./pages/GalleryPage";
 import SuccessStories from "./pages/SuccessStories";
 import FAQPage from "./pages/FAQPage";
 import AboutPage from "./pages/AboutPage";
@@ -27,6 +29,8 @@ function App() {
         <Route path="/universities" element={<UniversityFinder />} />
         <Route path="/learning-hub" element={<LearningHub />} />
         <Route path="/learning-hub/:id" element={<ArticlePage />} />
+        <Route path="/events" element={<EventsPage />} />
+        <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/success-stories" element={<SuccessStories />} />
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/about" element={<AboutPage />} />

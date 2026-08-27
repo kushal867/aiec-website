@@ -22,10 +22,10 @@ export default function BoardingMessage({
         initial={{ opacity: 0, y: 16, scale: 0.96, filter: "blur(6px)" }}
         animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
         transition={{ delay: 0.25, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className="mt-3 flex items-center justify-center gap-4 font-display text-[12vw] font-medium leading-none tracking-tight text-paper sm:text-7xl"
+        className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 font-display text-[clamp(2rem,10vw,3.4rem)] font-medium leading-tight tracking-tight text-paper sm:flex-nowrap sm:text-7xl sm:leading-none"
       >
         <span>{destination}</span>
-        <span className="text-[9vw] sm:text-5xl">{flag}</span>
+        <span className="text-[clamp(1.6rem,8vw,2.6rem)] sm:text-5xl">{flag}</span>
       </motion.h2>
 
       <motion.div

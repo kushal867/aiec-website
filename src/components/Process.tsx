@@ -31,12 +31,12 @@ function Word({
   return (
     <motion.div
       style={{ opacity, scale }}
-      className="absolute inset-0 flex flex-col items-center justify-center text-center"
+      className="container-px absolute inset-0 flex flex-col items-center justify-center text-center"
     >
       <span className="font-display text-sm font-semibold uppercase tracking-[0.3em] text-lime">
         {step}
       </span>
-      <h3 className="mt-4 font-display text-[16vw] font-medium uppercase leading-none tracking-tight text-paper sm:text-[9vw]">
+      <h3 className="mt-4 font-display text-[clamp(1.9rem,9vw,3.4rem)] font-medium uppercase leading-[1.05] tracking-tight text-paper sm:text-[9vw] sm:leading-none">
         {title}
       </h3>
       <p className="mt-6 max-w-md text-sm leading-relaxed text-muted">
@@ -59,7 +59,7 @@ export default function Process() {
         <span className="container-px mx-auto w-full max-w-[1600px] font-display text-xs font-semibold uppercase tracking-[0.3em] text-muted">
           How it works
         </span>
-        <div className="relative mt-6 h-[50vh] w-full">
+        <div className="relative mt-6 h-[65vh] w-full sm:h-[50vh]">
           {process.map((p, i) => (
             <Word
               key={p.step}

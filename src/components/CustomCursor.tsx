@@ -61,7 +61,7 @@ export default function CustomCursor() {
         className="flex items-center justify-center rounded-full mix-blend-difference"
       >
         {label && (
-          <span className="text-[9px] font-bold uppercase tracking-widest text-navy-900">
+          <span className="text-[9px] font-bold uppercase tracking-widest text-ink">
             {labels[label] ?? label}
           </span>
         )}

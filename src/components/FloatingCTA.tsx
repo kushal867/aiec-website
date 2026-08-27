@@ -23,7 +23,7 @@ export default function FloatingCTA({ onOpenContact }: { onOpenContact: () => vo
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.7, y: 20 }}
           transition={{ type: "spring", stiffness: 300, damping: 22 }}
-          className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3"
+          className="fixed bottom-6 right-6 z-50 hidden flex-col items-end gap-3 sm:flex"
         >
           <motion.a
             href="https://wa.me/9771XXXXXXX"

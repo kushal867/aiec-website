@@ -35,7 +35,7 @@ export default function PageHeader({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="mt-3 font-display text-[12vw] font-medium leading-[0.95] tracking-tight text-paper sm:text-7xl"
+        className="mt-3 font-display text-[clamp(2.1rem,9vw,3.2rem)] font-medium leading-[1.05] tracking-tight text-paper sm:text-7xl sm:leading-[0.95]"
       >
         {title}
       </motion.h1>

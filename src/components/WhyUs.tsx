@@ -12,9 +12,9 @@ export default function WhyUs() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="font-display text-[11vw] font-medium uppercase leading-[0.95] tracking-tight text-paper sm:text-[6vw]"
         >
-          We don't just
+          The paperwork
           <br />
-          help you apply.
+          is the easy part.
         </motion.h2>
 
         <motion.h2
@@ -24,10 +24,22 @@ export default function WhyUs() {
           transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="mt-2 font-display text-[11vw] font-medium uppercase leading-[0.95] tracking-tight text-paper/40 sm:text-[6vw]"
         >
-          We help you move
+          The waiting is
           <br />
-          toward what's next.
+          what gets to people.
         </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-8 max-w-md text-sm leading-relaxed text-muted"
+        >
+          Most of what we actually do is answer the same question at 11pm
+          that you asked at 9am — because for most students, this is the
+          first time they've done any of this.
+        </motion.p>
 
         <motion.div
           initial={{ opacity: 0 }}

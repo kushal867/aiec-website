@@ -46,6 +46,7 @@ export default function AboutPage() {
                 </div>
                 <div className="mt-3 text-sm font-semibold text-paper">{t.name}</div>
                 <div className="mt-0.5 text-xs text-muted">{t.role}</div>
+                <div className="mt-2 text-xs leading-relaxed text-paper/60">{t.note}</div>
               </motion.div>
             ))}
           </div>

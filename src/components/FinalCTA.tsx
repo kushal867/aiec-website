@@ -35,7 +35,7 @@ export default function FinalCTA({ onOpen }: { onOpen: () => void }) {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="group mt-14 flex items-center gap-4 font-display text-xl font-semibold uppercase tracking-wide text-lime sm:text-2xl"
         >
-          <span className="underline-sweep">Start your journey</span>
+          <span className="underline-sweep">Book a free session</span>
           <ArrowRight className="h-6 w-6 transition-transform duration-300 group-hover:translate-x-2" />
         </motion.button>
       </div>
