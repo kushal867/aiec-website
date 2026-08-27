@@ -1,11 +1,7 @@
 import { useEffect } from "react";
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
 
-export default function BackgroundVideoLayer({
-  broken = false,
-}: {
-  broken?: boolean;
-}) {
+export default function BackgroundVideoLayer() {
   const { scrollYProgress } = useScroll();
   const scrollScale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
   // Light at the very top (hero) so the video reads clearly, ramping up
@@ -51,9 +47,7 @@ export default function BackgroundVideoLayer({
             scale: scrollScale,
             x: springX,
             y: springY,
-            filter: broken
-              ? "saturate(2.2) hue-rotate(30deg) contrast(1.3)"
-              : "brightness(0.85) contrast(1.05)",
+            filter: "brightness(0.85) contrast(1.05)",
           }}
           className="h-full w-full object-cover will-change-transform"
           autoPlay
@@ -70,10 +64,6 @@ export default function BackgroundVideoLayer({
         style={{ opacity: overlayOpacity }}
         className="absolute inset-0 bg-gradient-to-b from-ink via-ink/70 to-ink"
       />
-
-      {broken && (
-        <div className="pointer-events-none absolute inset-0 bg-red-500/10 mix-blend-hue" />
-      )}
     </div>
   );
 }

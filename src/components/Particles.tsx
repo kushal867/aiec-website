@@ -8,7 +8,7 @@ type Particle = {
   r: number;
 };
 
-export default function Particles({ broken = false }: { broken?: boolean }) {
+export default function Particles() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouse = useRef({ x: -1000, y: -1000 });
   const particles = useRef<Particle[]>([]);
@@ -54,10 +54,10 @@ export default function Particles({ broken = false }: { broken?: boolean }) {
         const dx = p.x - mouse.current.x;
         const dy = p.y - mouse.current.y;
         const dist = Math.hypot(dx, dy);
-        const radius = broken ? 220 : 140;
+        const radius = 140;
 
         if (dist < radius) {
-          const force = ((radius - dist) / radius) * (broken ? 1.4 : 0.6);
+          const force = ((radius - dist) / radius) * 0.6;
           p.vx += (dx / (dist || 1)) * force * 0.06;
           p.vy += (dy / (dist || 1)) * force * 0.06;
         }
@@ -74,9 +74,7 @@ export default function Particles({ broken = false }: { broken?: boolean }) {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = broken
-          ? "rgba(230,80,80,0.6)"
-          : "rgba(219,169,64,0.45)";
+        ctx.fillStyle = "rgba(204,255,51,0.45)";
         ctx.fill();
       }
 
@@ -89,7 +87,7 @@ export default function Particles({ broken = false }: { broken?: boolean }) {
       window.removeEventListener("mousemove", onMove);
       cancelAnimationFrame(raf);
     };
-  }, [broken]);
+  }, []);
 
   return (
     <canvas

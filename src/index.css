@@ -31,19 +31,6 @@
     33% { transform: translate(24px, -30px) scale(1.08); }
     66% { transform: translate(-18px, 18px) scale(0.95); }
   }
-  @keyframes glitch-shift {
-    0%, 100% { transform: translate(0, 0); }
-    20% { transform: translate(-2px, 1px); }
-    40% { transform: translate(2px, -1px); }
-    60% { transform: translate(-1px, 2px); }
-    80% { transform: translate(1px, -2px); }
-  }
-  @keyframes screen-shake {
-    0%, 100% { transform: translate(0, 0); }
-    25% { transform: translate(-3px, 2px); }
-    50% { transform: translate(3px, -2px); }
-    75% { transform: translate(-2px, -3px); }
-  }
   @keyframes grain {
     0%, 100% { transform: translate(0, 0); }
     10% { transform: translate(-2%, -3%); }
@@ -136,17 +123,6 @@ button {
 .custom-cursor-active,
 .custom-cursor-active * {
   cursor: none !important;
-}
-
-.is-broken {
-  animation: screen-shake 0.35s ease-in-out infinite;
-}
-
-.is-broken .glitch-text {
-  animation: glitch-shift 0.25s steps(2) infinite;
-  text-shadow:
-    2px 0 rgba(230, 80, 80, 0.7),
-    -2px 0 rgba(80, 180, 230, 0.7);
 }
 
 @media (prefers-reduced-motion: reduce) {

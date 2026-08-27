@@ -14,13 +14,13 @@ import BoardingPass from "../components/BoardingPass";
 import FinalCTA from "../components/FinalCTA";
 import Footer from "../components/Footer";
 
-export default function Home({ broken = false }: { broken?: boolean }) {
+export default function Home() {
   const openContact = useContactModal();
 
   return (
     <>
       <DepartureTicker />
-      <Hero broken={broken} onOpenContact={openContact} />
+      <Hero onOpenContact={openContact} />
       <QuickAccessBar />
       <MarqueeLogos />
       <Stats onOpenContact={openContact} />

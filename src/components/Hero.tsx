@@ -14,10 +14,8 @@ const statements: Line[][] = [
 const CYCLE_MS = 5200;
 
 export default function Hero({
-  broken = false,
   onOpenContact,
 }: {
-  broken?: boolean;
   onOpenContact: () => void;
 }) {
   const ref = useRef<HTMLElement>(null);
@@ -86,9 +84,7 @@ export default function Hero({
           </motion.p>
 
           <h1
-            className={`mt-5 max-w-[600px] select-none font-display text-[2.6rem] font-semibold leading-[1.02] tracking-tight text-paper sm:mt-6 sm:text-[3.5rem] lg:text-[4.75rem] ${
-              broken ? "glitch-text" : ""
-            }`}
+            className="mt-5 max-w-[600px] select-none font-display text-[2.6rem] font-semibold leading-[1.02] tracking-tight text-paper sm:mt-6 sm:text-[3.5rem] lg:text-[4.75rem]"
             style={{ minHeight: "3.3em" }}
           >
             <AnimatePresence mode="wait">

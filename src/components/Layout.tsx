@@ -4,7 +4,6 @@ import { Outlet, useLocation } from "react-router-dom";
 import BackgroundVideoLayer from "./BackgroundVideoLayer";
 import Particles from "./Particles";
 import CustomCursor from "./CustomCursor";
-import BreakTheWebsite from "./BreakTheWebsite";
 import FloatingNav from "./nav/FloatingNav";
 import FullscreenMenu from "./nav/FullscreenMenu";
 import SearchOverlay from "./SearchOverlay";
@@ -17,7 +16,6 @@ import { FlightProvider } from "../lib/flightContext";
 
 export default function Layout() {
   const location = useLocation();
-  const [broken, setBroken] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
@@ -35,13 +33,12 @@ export default function Layout() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className={`relative min-h-screen pb-16 sm:pb-0 ${broken ? "is-broken" : ""}`}
+          className="relative min-h-screen pb-16 sm:pb-0"
         >
-          <BackgroundVideoLayer broken={broken} />
-          <Particles broken={broken} />
+          <BackgroundVideoLayer />
+          <Particles />
           <div className="grain" />
           <CustomCursor />
-          <BreakTheWebsite broken={broken} onToggle={() => setBroken((b) => !b)} />
 
           <FloatingNav
             open={menuOpen}
