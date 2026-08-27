@@ -4,7 +4,10 @@ export default function MarqueeLogos() {
   const loop = [...partnerLogos, ...partnerLogos];
 
   return (
-    <div className="border-y border-line py-6">
+    <div className="relative z-10 border-b border-line bg-ink/75 py-6 backdrop-blur-md">
+      <p className="container-px mx-auto mb-3 max-w-[1600px] font-display text-[10px] font-semibold uppercase tracking-[0.3em] text-lime">
+        Trusted pathways to
+      </p>
       <div
         className="relative overflow-hidden"
         style={{
@@ -18,7 +21,7 @@ export default function MarqueeLogos() {
           {loop.map((name, i) => (
             <span
               key={i}
-              className="whitespace-nowrap font-display text-lg font-medium uppercase tracking-wide text-muted"
+              className="whitespace-nowrap font-display text-lg font-medium uppercase tracking-wide text-paper/70"
             >
               {name}
             </span>

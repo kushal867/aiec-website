@@ -11,14 +11,14 @@ const items = [
 
 export default function QuickAccessBar() {
   return (
-    <div className="border-y border-line">
+    <div className="relative z-10 border-y border-line bg-ink/75 backdrop-blur-md">
       <div className="container-px mx-auto flex max-w-[1600px] flex-wrap items-center gap-x-8 gap-y-3 py-5">
         {items.map((item) => (
           <Link
             key={item.label}
             to={item.href}
             data-cursor="view"
-            className="underline-sweep font-display text-sm font-semibold uppercase tracking-wide text-paper/80"
+            className="underline-sweep font-display text-sm font-semibold uppercase tracking-wide text-paper"
           >
             {item.label}
           </Link>
