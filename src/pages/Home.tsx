@@ -23,7 +23,7 @@ export default function Home({ broken = false }: { broken?: boolean }) {
       <Hero broken={broken} onOpenContact={openContact} />
       <QuickAccessBar />
       <MarqueeLogos />
-      <Stats />
+      <Stats onOpenContact={openContact} />
       <Services />
       <DestinationsPreview />
       <Process />
