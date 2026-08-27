@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import { process } from "../data/content";
 
@@ -52,19 +52,58 @@ function Word({
   );
 }
 
+function StepReadout({
+  progress,
+  total,
+}: {
+  progress: MotionValue<number>;
+  total: number;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    return progress.on("change", (v) => {
+      const step = Math.min(total, Math.max(1, Math.floor(v * total) + 1));
+      if (ref.current) {
+        ref.current.textContent = `${String(step).padStart(2, "0")} — ${String(total).padStart(2, "0")}`;
+      }
+    });
+  }, [progress, total]);
+
+  return (
+    <span ref={ref} className="font-mono text-xs tracking-wider text-paper/70">
+      01 — {String(total).padStart(2, "0")}
+    </span>
+  );
+}
+
 export default function Process() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end end"],
   });
+  const barScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
     <section id="process" ref={ref} className="relative" style={{ height: "400vh" }}>
       <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
-        <span className="container-px mx-auto w-full max-w-[1600px] font-display text-xs font-semibold uppercase tracking-[0.3em] text-muted">
-          How it works
-        </span>
+        <div className="container-px mx-auto flex w-full max-w-[1600px] items-center justify-between">
+          <span className="font-display text-xs font-semibold uppercase tracking-[0.3em] text-muted">
+            How it works
+          </span>
+          <StepReadout progress={scrollYProgress} total={process.length} />
+        </div>
+
+        <div className="container-px mx-auto mt-3 w-full max-w-[1600px]">
+          <div className="h-px w-full bg-line">
+            <motion.div
+              style={{ scaleX: barScale }}
+              className="h-full w-full origin-left bg-lime"
+            />
+          </div>
+        </div>
+
         <div className="relative mt-6 h-[65vh] w-full sm:h-[50vh]">
           {process.map((p, i) => (
             <Word

@@ -3,8 +3,9 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 
 const labels: Record<string, string> = {
   view: "VIEW",
+  explore: "EXPLORE",
   play: "PLAY",
-  talk: "LET'S TALK",
+  talk: "TALK",
 };
 
 export default function CustomCursor() {
@@ -55,7 +56,7 @@ export default function CustomCursor() {
         animate={{
           width: label ? 84 : 10,
           height: label ? 84 : 10,
-          backgroundColor: label ? "rgba(219,169,64,0.95)" : "rgba(255,255,255,0.9)",
+          backgroundColor: label ? "rgba(204,255,51,0.95)" : "rgba(255,255,255,0.9)",
         }}
         transition={{ type: "spring", stiffness: 300, damping: 25 }}
         className="flex items-center justify-center rounded-full mix-blend-difference"

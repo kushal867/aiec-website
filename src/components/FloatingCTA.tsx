@@ -50,7 +50,7 @@ export default function FloatingCTA({ onOpenContact }: { onOpenContact: () => vo
             className="flex items-center gap-2 rounded-full bg-lime px-5 py-3.5 text-sm font-semibold text-ink shadow-lg shadow-lime/20"
           >
             <Headset className="h-4.5 w-4.5" />
-            Talk to a counsellor
+            Talk to a Counsellor
           </motion.button>
         </motion.div>
       )}

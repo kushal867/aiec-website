@@ -1,6 +1,17 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+
+type Line = { text: string; accent?: boolean };
+
+const statements: Line[][] = [
+  [{ text: "Your journey to" }, { text: "global education", accent: true }, { text: "starts here." }],
+  [{ text: "We map the path." }, { text: "You take the step." }],
+  [{ text: "One counsellor." }, { text: "Every step." }, { text: "No guesswork." }],
+];
+
+const CYCLE_MS = 5200;
 
 export default function Hero({
   broken = false,
@@ -15,12 +26,30 @@ export default function Hero({
     offset: ["start start", "end start"],
   });
 
+  const [index, setIndex] = useState(0);
+  const [cyclingEnabled, setCyclingEnabled] = useState(false);
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (prefersReducedMotion) return;
+
+    setCyclingEnabled(true);
+    const id = window.setInterval(() => {
+      setIndex((i) => (i + 1) % statements.length);
+    }, CYCLE_MS);
+    return () => window.clearInterval(id);
+  }, []);
+
   // As the hero scrolls out of view, let it recede — fade, drift up and
   // scale down slightly — so the next section feels like it settles in
   // underneath, rather than a hard cut.
   const exitOpacity = useTransform(scrollYProgress, [0, 0.7, 1], [1, 1, 0]);
   const exitY = useTransform(scrollYProgress, [0, 1], [0, -60]);
   const exitScale = useTransform(scrollYProgress, [0, 1], [1, 0.96]);
+
+  const current = cyclingEnabled ? statements[index] : statements[0];
 
   return (
     <section
@@ -56,17 +85,45 @@ export default function Hero({
             Global Education &amp; Career Consultancy
           </motion.p>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          <h1
             className={`mt-5 max-w-[600px] select-none font-display text-[2.6rem] font-semibold leading-[1.02] tracking-tight text-paper sm:mt-6 sm:text-[3.5rem] lg:text-[4.75rem] ${
               broken ? "glitch-text" : ""
             }`}
+            style={{ minHeight: "3.3em" }}
           >
-            Your journey to <span className="text-lime">global education</span>{" "}
-            starts here.
-          </motion.h1>
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={index}
+                initial={false}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="block"
+              >
+                {current.map((line, i) => (
+                  <span key={i} className="block overflow-hidden">
+                    <motion.span
+                      initial={{ y: "115%", opacity: 0, filter: "blur(10px)" }}
+                      animate={{ y: "0%", opacity: 1, filter: "blur(0px)" }}
+                      exit={{
+                        y: "-60%",
+                        opacity: 0,
+                        filter: "blur(8px)",
+                        transition: { duration: 0.4, delay: i * 0.04 },
+                      }}
+                      transition={{
+                        duration: 0.75,
+                        delay: 0.1 + i * 0.09,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
+                      className={`block ${line.accent ? "text-lime" : ""}`}
+                    >
+                      {line.text}
+                    </motion.span>
+                  </span>
+                ))}
+              </motion.span>
+            </AnimatePresence>
+          </h1>
 
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -95,17 +152,17 @@ export default function Hero({
               transition={{ duration: 0.3 }}
               className="group inline-flex items-center gap-2.5 rounded-full bg-lime px-7 py-3.5 font-display text-sm font-semibold text-ink transition-colors duration-300 hover:bg-lime-dim"
             >
-              Start Your Journey
+              Talk to a Counsellor
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </motion.button>
 
-            <a
-              href="#services"
-              data-cursor="view"
+            <Link
+              to="/destinations"
+              data-cursor="explore"
               className="underline-sweep font-display text-sm font-semibold text-paper/85"
             >
-              Explore Programs
-            </a>
+              Explore Destinations
+            </Link>
           </motion.div>
         </div>
       </motion.div>

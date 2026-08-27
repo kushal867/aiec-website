@@ -115,7 +115,7 @@ export default function Stats({ onOpenContact }: { onOpenContact?: () => void })
           data-cursor="talk"
           className="group absolute bottom-6 right-6 z-10 inline-flex items-center gap-2.5 rounded-full bg-lime px-6 py-3 font-display text-sm font-semibold text-ink transition-colors duration-300 hover:bg-lime-dim sm:bottom-10 sm:right-10"
         >
-          Talk to a Counselor
+          Talk to a Counsellor
           <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
         </motion.button>
       )}

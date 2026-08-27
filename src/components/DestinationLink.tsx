@@ -6,7 +6,7 @@ export default function DestinationLink({
   destination,
   flag,
   className,
-  dataCursor = "view",
+  dataCursor = "explore",
   children,
 }: {
   to: string;

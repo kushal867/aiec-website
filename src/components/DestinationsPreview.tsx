@@ -55,7 +55,7 @@ export default function DestinationsPreview() {
                     destination={d.name}
                     flag={d.flag}
                     className="flex items-center gap-4 py-5 sm:gap-8 sm:py-7"
-                    dataCursor="view"
+                    dataCursor="explore"
                   >
                     <span
                       className={`hidden w-6 shrink-0 font-mono text-xs transition-colors duration-300 sm:block ${

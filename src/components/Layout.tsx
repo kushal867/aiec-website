@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { Outlet } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { Outlet, useLocation } from "react-router-dom";
 import BackgroundVideoLayer from "./BackgroundVideoLayer";
 import Particles from "./Particles";
 import CustomCursor from "./CustomCursor";
@@ -16,6 +16,7 @@ import { ContactContext } from "../lib/contactContext";
 import { FlightProvider } from "../lib/flightContext";
 
 export default function Layout() {
+  const location = useLocation();
   const [broken, setBroken] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -52,7 +53,17 @@ export default function Layout() {
           <FlightTransition />
 
           <div className="relative z-10">
-            <Outlet />
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={location.pathname}
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -18 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <Outlet />
+              </motion.div>
+            </AnimatePresence>
           </div>
 
           <ApplyForm open={contactOpen} onClose={() => setContactOpen(false)} />
