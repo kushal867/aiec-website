@@ -23,15 +23,21 @@ function Word({
 
   const opacity = useTransform(
     progress,
-    [start, start + 0.05, mid, end - 0.05, end],
-    [0.15, 1, 1, 1, 0.15]
+    [start, start + 0.06, mid, end - 0.06, end],
+    [0, 1, 1, 1, 0]
   );
-  const scale = useTransform(progress, [start, mid, end], [0.9, 1, 0.9]);
+  const scale = useTransform(progress, [start, mid, end], [0.92, 1, 0.92]);
+  const blur = useTransform(
+    progress,
+    [start, start + 0.06, mid, end - 0.06, end],
+    [8, 0, 0, 0, 8]
+  );
+  const filter = useTransform(blur, (v) => `blur(${v}px)`);
 
   return (
     <motion.div
-      style={{ opacity, scale }}
-      className="container-px absolute inset-0 flex flex-col items-center justify-center text-center"
+      style={{ opacity, scale, filter }}
+      className="container-px pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center"
     >
       <span className="font-display text-sm font-semibold uppercase tracking-[0.3em] text-lime">
         {step}
