@@ -14,11 +14,21 @@ export default function Hero({
       className="relative flex h-[100svh] items-center overflow-hidden"
     >
       {/* Hero-local darkening: strongest on the left where the copy sits,
-          fading out toward the right so the person in frame stays visible. */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink via-ink/55 to-transparent" />
+          fading out across the middle and right so the person and the
+          room behind them stay clearly visible. */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(90deg, rgba(5,8,12,0.70) 0%, rgba(5,8,12,0.42) 38%, rgba(5,8,12,0.18) 70%, rgba(5,8,12,0.10) 100%), linear-gradient(0deg, rgba(5,8,12,0.45) 0%, transparent 45%)",
+        }}
+      />
 
       <div className="container-px relative z-10 mx-auto w-full max-w-[1600px]">
-        <div className="max-w-[650px]">
+        <div
+          className="max-w-[650px]"
+          style={{ textShadow: "0 2px 16px rgba(5,8,12,0.55)" }}
+        >
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

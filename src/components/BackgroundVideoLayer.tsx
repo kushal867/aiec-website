@@ -7,7 +7,13 @@ export default function BackgroundVideoLayer({
 }) {
   const { scrollYProgress } = useScroll();
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
-  const overlayOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.65, 0.78, 0.9]);
+  // Light at the very top (hero) so the video reads clearly, ramping up
+  // as content sections need more contrast further down the page.
+  const overlayOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.12, 0.5, 1],
+    [0.12, 0.5, 0.72, 0.86]
+  );
 
   return (
     <div className="fixed inset-0 z-0 overflow-hidden bg-ink">
@@ -16,9 +22,9 @@ export default function BackgroundVideoLayer({
           scale,
           filter: broken
             ? "saturate(2.2) hue-rotate(30deg) contrast(1.3)"
-            : "none",
+            : "brightness(0.85) contrast(1.05)",
         }}
-        className="h-full w-full object-cover opacity-45 will-change-transform"
+        className="h-full w-full object-cover will-change-transform"
         autoPlay
         muted
         loop
