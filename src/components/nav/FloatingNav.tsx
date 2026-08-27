@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Plus, X, Search } from "lucide-react";
@@ -11,8 +12,21 @@ export default function FloatingNav({
   onToggle: () => void;
   onSearch: () => void;
 }) {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <div className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 py-6 sm:px-10 sm:py-8">
+    <div
+      className={`fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 py-6 transition-colors duration-500 sm:px-10 sm:py-8 ${
+        scrolled ? "bg-ink/55 backdrop-blur-md" : "bg-transparent"
+      }`}
+    >
       <Link
         to="/"
         className="whitespace-nowrap font-display text-xs font-bold uppercase tracking-[0.15em] text-paper sm:text-sm sm:tracking-[0.2em]"

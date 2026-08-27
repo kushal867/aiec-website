@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 export default function Hero({
@@ -8,9 +9,23 @@ export default function Hero({
   broken?: boolean;
   onOpenContact: () => void;
 }) {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+
+  // As the hero scrolls out of view, let it recede — fade, drift up and
+  // scale down slightly — so the next section feels like it settles in
+  // underneath, rather than a hard cut.
+  const exitOpacity = useTransform(scrollYProgress, [0, 0.7, 1], [1, 1, 0]);
+  const exitY = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const exitScale = useTransform(scrollYProgress, [0, 1], [1, 0.96]);
+
   return (
     <section
       id="top"
+      ref={ref}
       className="relative flex h-[100svh] items-center overflow-hidden"
     >
       {/* Hero-local darkening: strongest on the left where the copy sits,
@@ -24,7 +39,10 @@ export default function Hero({
         }}
       />
 
-      <div className="container-px relative z-10 mx-auto w-full max-w-[1600px]">
+      <motion.div
+        style={{ opacity: exitOpacity, y: exitY, scale: exitScale }}
+        className="container-px relative z-10 mx-auto w-full max-w-[1600px] will-change-transform"
+      >
         <div
           className="max-w-[650px]"
           style={{ textShadow: "0 2px 16px rgba(5,8,12,0.55)" }}
@@ -69,8 +87,12 @@ export default function Hero({
             <motion.button
               data-cursor="talk"
               onClick={onOpenContact}
-              whileHover={{ scale: 1.03 }}
+              whileHover={{
+                scale: 1.03,
+                boxShadow: "0 0 32px rgba(204,255,51,0.35)",
+              }}
               whileTap={{ scale: 0.97 }}
+              transition={{ duration: 0.3 }}
               className="group inline-flex items-center gap-2.5 rounded-full bg-lime px-7 py-3.5 font-display text-sm font-semibold text-ink transition-colors duration-300 hover:bg-lime-dim"
             >
               Start Your Journey
@@ -86,9 +108,10 @@ export default function Hero({
             </a>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       <motion.div
+        style={{ opacity: exitOpacity }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.7, delay: 1.1 }}
