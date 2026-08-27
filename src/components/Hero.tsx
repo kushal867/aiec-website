@@ -26,7 +26,7 @@ export default function Hero({
         </motion.p>
 
         <h1
-          className={`mt-6 font-display font-medium leading-[0.95] tracking-tight text-paper sm:mt-10 ${
+          className={`mt-6 select-none font-display font-medium leading-[0.95] tracking-tight text-paper sm:mt-10 ${
             broken ? "glitch-text" : ""
           }`}
         >

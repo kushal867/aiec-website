@@ -71,8 +71,8 @@ body {
 }
 
 ::selection {
-  background: var(--color-lime);
-  color: var(--color-ink);
+  background: rgba(204, 255, 51, 0.35);
+  color: inherit;
 }
 
 /* film-grain overlay, sits above the video, below content */
