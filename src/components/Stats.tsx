@@ -49,7 +49,7 @@ function StatBlock({
 
 export default function Stats({ onOpenContact }: { onOpenContact?: () => void }) {
   return (
-    <section className="relative h-[100svh] w-full overflow-hidden">
+    <section className="relative w-full overflow-hidden py-24 sm:h-[100svh] sm:py-0">
       {/* vignette: darker at the edges where the stats/CTA sit, lighter
           through the centre so the person stays the visual anchor */}
       <div
@@ -89,8 +89,11 @@ export default function Stats({ onOpenContact }: { onOpenContact?: () => void })
         ))}
       </div>
 
-      {/* mobile — clean 2x2 grid over the same background */}
-      <div className="container-px relative flex h-full items-center sm:hidden">
+      {/* mobile — clean 2x2 grid over the same background, CTA sits in
+          normal flow below it (not absolutely pinned) so it never
+          collides with the fixed mobile sticky bar at the true screen
+          bottom */}
+      <div className="container-px relative flex flex-col items-center gap-12 sm:hidden">
         <div className="grid w-full grid-cols-2 gap-x-8 gap-y-12">
           {stats.map((s, i) => (
             <div
@@ -101,6 +104,22 @@ export default function Stats({ onOpenContact }: { onOpenContact?: () => void })
             </div>
           ))}
         </div>
+
+        {onOpenContact && (
+          <motion.button
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            whileTap={{ scale: 0.97 }}
+            onClick={onOpenContact}
+            data-cursor="talk"
+            className="inline-flex items-center gap-2.5 self-start rounded-full bg-lime px-6 py-3 font-display text-sm font-semibold text-ink"
+          >
+            Talk to a Counsellor
+            <ArrowRight className="h-4 w-4" />
+          </motion.button>
+        )}
       </div>
 
       {onOpenContact && (
@@ -113,7 +132,7 @@ export default function Stats({ onOpenContact }: { onOpenContact?: () => void })
           whileTap={{ scale: 0.97 }}
           onClick={onOpenContact}
           data-cursor="talk"
-          className="group absolute bottom-6 right-6 z-10 inline-flex items-center gap-2.5 rounded-full bg-lime px-6 py-3 font-display text-sm font-semibold text-ink transition-colors duration-300 hover:bg-lime-dim sm:bottom-10 sm:right-10"
+          className="group absolute bottom-10 right-10 z-10 hidden items-center gap-2.5 rounded-full bg-lime px-6 py-3 font-display text-sm font-semibold text-ink transition-colors duration-300 hover:bg-lime-dim sm:inline-flex"
         >
           Talk to a Counsellor
           <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
