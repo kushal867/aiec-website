@@ -54,7 +54,7 @@ export default function FlightTransition() {
             }}
             className="absolute w-[34vw] max-w-[260px] min-w-[140px] -translate-x-1/2 -translate-y-1/2 will-change-transform"
           >
-            <RealisticAircraft className="w-full drop-shadow-[0_0_18px_rgba(184,134,47,0.2)]" />
+            <RealisticAircraft className="w-full drop-shadow-[0_0_18px_rgba(204,255,51,0.15)]" />
           </motion.div>
 
           <div className="relative z-10 flex h-full items-center justify-center">

@@ -142,7 +142,7 @@ export default function Hero({
               onClick={onOpenContact}
               whileHover={{
                 scale: 1.03,
-                boxShadow: "0 0 32px rgba(184,134,47,0.35)",
+                boxShadow: "0 0 32px rgba(204,255,51,0.35)",
               }}
               whileTap={{ scale: 0.97 }}
               transition={{ duration: 0.3 }}

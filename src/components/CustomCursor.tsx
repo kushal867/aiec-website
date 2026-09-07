@@ -56,7 +56,7 @@ export default function CustomCursor() {
         animate={{
           width: label ? 84 : 10,
           height: label ? 84 : 10,
-          backgroundColor: label ? "rgba(184,134,47,0.95)" : "rgba(255,255,255,0.9)",
+          backgroundColor: label ? "rgba(204,255,51,0.95)" : "rgba(255,255,255,0.9)",
         }}
         transition={{ type: "spring", stiffness: 300, damping: 25 }}
         className="flex items-center justify-center rounded-full mix-blend-difference"
