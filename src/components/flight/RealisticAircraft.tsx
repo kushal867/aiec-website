@@ -14,7 +14,7 @@ export default function RealisticAircraft({ className }: { className?: string })
         </linearGradient>
         <linearGradient id="wing" x1="0" y1="0" x2="1" y2="0.3">
           <stop offset="0%" stopColor="#9fae7a" />
-          <stop offset="100%" stopColor="#ccff33" />
+          <stop offset="100%" stopColor="#b8862f" />
         </linearGradient>
         <filter id="planeShadow" x="-40%" y="-40%" width="180%" height="220%">
           <feDropShadow dx="0" dy="6" stdDeviation="5" floodColor="#07090d" floodOpacity="0.45" />

@@ -37,7 +37,7 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.4, delay: i * 0.06 }}
-                className="group relative flex items-center justify-between gap-6 overflow-hidden border-b border-line py-6 sm:py-9"
+                className="group relative flex flex-col gap-3 overflow-hidden border-b border-line py-6 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:py-9"
               >
                 <AnimatePresence>
                   {isHovered && (
@@ -72,7 +72,7 @@ export default function Services() {
                 </div>
 
                 <p
-                  className={`relative z-10 hidden max-w-xs text-right text-sm leading-relaxed transition-colors sm:block ${
+                  className={`relative z-10 max-w-xs text-sm leading-relaxed transition-colors sm:text-right ${
                     isHovered ? "text-ink/70" : "text-muted"
                   }`}
                 >

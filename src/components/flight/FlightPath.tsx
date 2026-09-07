@@ -9,8 +9,8 @@ export default function FlightPath() {
     >
       <defs>
         <linearGradient id="routeGlow" x1="0" y1="1" x2="1" y2="0">
-          <stop offset="0%" stopColor="#ccff33" stopOpacity="0" />
-          <stop offset="100%" stopColor="#ccff33" stopOpacity="0.9" />
+          <stop offset="0%" stopColor="#b8862f" stopOpacity="0" />
+          <stop offset="100%" stopColor="#b8862f" stopOpacity="0.9" />
         </linearGradient>
       </defs>
 
@@ -31,7 +31,7 @@ export default function FlightPath() {
 
       <motion.circle
         r="0.9"
-        fill="#ccff33"
+        fill="#b8862f"
         initial={{ offsetDistance: "0%", opacity: 0 }}
         animate={{ offsetDistance: "100%", opacity: [0, 1, 1, 0] }}
         transition={{
@@ -40,7 +40,7 @@ export default function FlightPath() {
         }}
         style={{
           offsetPath: "path('M -10 82 Q 35 68 55 48 T 112 15')",
-          filter: "drop-shadow(0 0 3px #ccff33)",
+          filter: "drop-shadow(0 0 3px #b8862f)",
         }}
       />
     </svg>
