@@ -4,6 +4,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import BackgroundVideoLayer from "./BackgroundVideoLayer";
 import Particles from "./Particles";
 import CustomCursor from "./CustomCursor";
+import ScrollProgress from "./ScrollProgress";
 import FloatingNav from "./nav/FloatingNav";
 import FullscreenMenu from "./nav/FullscreenMenu";
 import SearchOverlay from "./SearchOverlay";
@@ -39,6 +40,7 @@ export default function Layout() {
           <Particles />
           <div className="grain" />
           <CustomCursor />
+          <ScrollProgress />
 
           <FloatingNav
             open={menuOpen}
