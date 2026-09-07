@@ -14,8 +14,10 @@ import FloatingCTA from "./FloatingCTA";
 import FlightTransition from "./FlightTransition";
 import { ContactContext } from "../lib/contactContext";
 import { FlightProvider } from "../lib/flightContext";
+import { useLenis } from "../lib/useLenis";
 
 export default function Layout() {
+  useLenis();
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
