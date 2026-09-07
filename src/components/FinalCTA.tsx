@@ -6,18 +6,16 @@ export default function FinalCTA({ onOpen }: { onOpen: () => void }) {
   const magnet = useMagnetic(0.2);
 
   return (
-    <section id="contact" className="relative flex min-h-[90vh] flex-col justify-center py-24">
+    <section id="contact" className="relative border-t border-line py-24 sm:py-32">
       <div className="container-px mx-auto max-w-[1600px]">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display text-[16vw] font-medium uppercase leading-[0.9] tracking-tight text-paper sm:text-[10vw]"
+          className="font-display text-[clamp(2.4rem,9vw,5.5rem)] font-medium uppercase leading-[0.95] tracking-tight text-paper"
         >
-          Ready
-          <br />
-          to move
+          Ready to move
           <br />
           forward?
         </motion.h2>
