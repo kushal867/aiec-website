@@ -1,3 +1,24 @@
+import cms from "./content.json";
+
+// The collections below come from content.json — the file the /admin
+// content manager edits and publishes directly to GitHub. Keeping the
+// same export names/shapes here means every component that already
+// imports from "content.ts" picks up admin edits automatically, with
+// no changes needed anywhere else in the app.
+export const stats: { value: number; suffix: string; label: string }[] = cms.stats;
+export const services: { icon: string; title: string; desc: string }[] = cms.services;
+export const destinations: { name: string; code: string; universities: number; flag: string }[] = cms.destinations;
+export const process: { step: string; title: string; desc: string }[] = cms.process;
+export const whyUs: { icon: string; title: string; desc: string }[] = cms.whyUs;
+export const team: { name: string; role: string; initials: string; note: string }[] = cms.team;
+export const faqs: { q: string; a: string }[] = cms.faqs;
+export const testimonials: { name: string; dest: string; quote: string }[] = cms.testimonials;
+export const successJourneys: { name: string; test: string; score: string; university: string; country: string; quote: string }[] = cms.successJourneys;
+export const trustSignals: string[] = cms.trustSignals;
+export const partnerLogos: string[] = cms.partnerLogos;
+export const events: { id: string; title: string; type: string; date: string; time: string; mode: string; desc: string }[] = cms.events;
+export const galleryItems: { id: number; caption: string; tone: string }[] = cms.galleryItems;
+
 export const nav = [
   { label: "Destinations", href: "#destinations" },
   { label: "Services", href: "#services" },
@@ -18,205 +39,6 @@ export const routeNav = [
   { n: "07", label: "Success Stories", href: "/success-stories" },
   { n: "08", label: "About", href: "/about" },
   { n: "09", label: "Contact", href: "/contact" },
-];
-
-export const events = [
-  {
-    id: "au-info-session",
-    title: "Australia Info Session",
-    type: "Info Session",
-    date: "2026-09-12",
-    time: "5:00 PM",
-    mode: "In-person — Kathmandu office",
-    desc: "Live Q&A on Australian intakes, popular courses and scholarship windows for Feb 2027.",
-  },
-  {
-    id: "pte-workshop",
-    title: "Free PTE Strategy Workshop",
-    type: "Test Prep Workshop",
-    date: "2026-09-20",
-    time: "3:00 PM",
-    mode: "Online — Zoom",
-    desc: "A 90-minute walkthrough of PTE speaking and writing scoring, with live practice.",
-  },
-  {
-    id: "uk-fair",
-    title: "UK University Fair",
-    type: "University Fair",
-    date: "2026-10-03",
-    time: "11:00 AM",
-    mode: "In-person — Kathmandu office",
-    desc: "Meet representatives from partner UK universities and get on-the-spot offer reviews.",
-  },
-  {
-    id: "visa-clinic",
-    title: "Visa Documentation Clinic",
-    type: "Clinic",
-    date: "2026-10-15",
-    time: "4:30 PM",
-    mode: "Online — Zoom",
-    desc: "Bring your documents for a live review ahead of your visa filing appointment.",
-  },
-];
-
-export const galleryItems = [
-  { id: 1, caption: "Australia info session, Kathmandu office", tone: "from-ink-soft to-ink" },
-  { id: 2, caption: "PTE workshop, live speaking practice", tone: "from-lime/40 to-ink" },
-  { id: 3, caption: "UK University Fair, counsellor meet-ups", tone: "from-paper/20 to-ink" },
-  { id: 4, caption: "Pre-departure briefing, Fall intake", tone: "from-ink-soft to-ink" },
-  { id: 5, caption: "Scholarship award ceremony", tone: "from-lime/30 to-ink-soft" },
-  { id: 6, caption: "Visa documentation clinic", tone: "from-ink to-paper/15" },
-  { id: 7, caption: "Student send-off, Australia batch", tone: "from-ink to-ink-soft" },
-  { id: 8, caption: "Office open day", tone: "from-paper/15 to-ink" },
-];
-
-
-export const whyUs = [
-  {
-    icon: "Users",
-    title: "One counsellor, the whole way through",
-    desc: "You keep the same person from your first call to your visa interview — nobody hands your file off mid-process.",
-  },
-  {
-    icon: "BadgeCheck",
-    title: "We'll tell you if a university's a bad fit",
-    desc: "Sometimes the honest answer is 'don't apply there' — even when it means fewer applications for us to process.",
-  },
-  {
-    icon: "Clock4",
-    title: "We remember your deadlines so you don't have to",
-    desc: "Document checklists and visa timelines tracked on our end, with reminders before things get tight.",
-  },
-  {
-    icon: "HandCoins",
-    title: "The price we quote is the price you pay",
-    desc: "No surprise add-ons after you've signed. If something changes, we tell you before it costs you anything.",
-  },
-];
-
-export const team = [
-  { name: "Sabina Rai", role: "Senior Counsellor — UK & Ireland", initials: "SR", note: "Went through the UK visa process herself in 2019 — still remembers how confusing the CAS letter was." },
-  { name: "Bikash Thapa", role: "Senior Counsellor — Australia & NZ", initials: "BT", note: "Six years into this; keeps a running spreadsheet of every intake deadline change so you don't have to." },
-  { name: "Anjali Gurung", role: "Visa & Documentation Lead", initials: "AG", note: "Has read more refusal letters than she'd like to admit — usually knows what went wrong within a page." },
-  { name: "Nabin Poudel", role: "Counsellor — Canada & USA", initials: "NP", note: "Joined after his own PR application took two extra years — asks the questions others forget to." },
-];
-
-export const faqs = [
-  {
-    q: "Is the counselling session really free?",
-    a: "Yes. Your first consultation, university shortlisting and application support come at no cost to you — we're compensated by our partner universities, not by charging students to apply.",
-  },
-  {
-    q: "How long does the whole process usually take?",
-    a: "Most students start counselling 8–12 months before their target intake. Tighter timelines are possible for some destinations, but they're stressful — your counsellor will be upfront with you about what's realistic in your first session.",
-  },
-  {
-    q: "Do you guarantee visa approval?",
-    a: "No — and be wary of anyone who tells you they can. What we can promise is a complete, embassy-ready application and a proper mock interview beforehand. Our visa success rate has held around 96% over the last few intakes.",
-  },
-  {
-    q: "What if I don't have IELTS or PTE yet?",
-    a: "That's the normal starting point, honestly. We'll help you figure out which test suits you and point you toward preparation before you book it.",
-  },
-  {
-    q: "Can you help if my visa was refused before?",
-    a: "Yes — we see this often enough that it's not unusual to us, even if it feels that way to you right now. We go through the refusal reason line by line and rebuild the application around it.",
-  },
-];
-
-export const stats = [
-  { value: 11842, suffix: "+", label: "Students placed abroad" },
-  { value: 463, suffix: "+", label: "Partner universities" },
-  { value: 96, suffix: "%", label: "Visa success rate" },
-  { value: 21, suffix: "", label: "Destination countries" },
-];
-
-export const services = [
-  {
-    icon: "Compass",
-    title: "Free Counselling",
-    desc: "One-on-one sessions to map your academic goals to the right country, course and budget.",
-  },
-  {
-    icon: "GraduationCap",
-    title: "University Shortlisting",
-    desc: "Curated shortlist across our partner network based on your profile and target intake.",
-  },
-  {
-    icon: "FileCheck",
-    title: "Application & Documentation",
-    desc: "End-to-end help with SOPs, LORs, transcripts and portal submissions — no missed deadlines.",
-  },
-  {
-    icon: "ShieldCheck",
-    title: "Visa Assistance",
-    desc: "Mock interviews, financial documentation and embassy-ready visa filing support.",
-  },
-  {
-    icon: "Gift",
-    title: "Scholarship Guidance",
-    desc: "We match you against merit and need-based scholarships before you ever apply.",
-  },
-  {
-    icon: "Headset",
-    title: "Pre-Departure Support",
-    desc: "Flight booking, accommodation, forex and orientation briefings before you fly.",
-  },
-];
-
-export const destinations = [
-  { name: "United Kingdom", code: "UK", universities: 96, flag: "🇬🇧" },
-  { name: "Australia", code: "AU", universities: 74, flag: "🇦🇺" },
-  { name: "Canada", code: "CA", universities: 61, flag: "🇨🇦" },
-  { name: "United States", code: "US", universities: 88, flag: "🇺🇸" },
-  { name: "Germany", code: "DE", universities: 42, flag: "🇩🇪" },
-  { name: "Japan", code: "JP", universities: 29, flag: "🇯🇵" },
-  { name: "New Zealand", code: "NZ", universities: 33, flag: "🇳🇿" },
-  { name: "Ireland", code: "IE", universities: 27, flag: "🇮🇪" },
-];
-
-export const process = [
-  {
-    step: "01",
-    title: "Free Consultation",
-    desc: "Tell us your academic background and goals — we chart the best-fit pathway.",
-  },
-  {
-    step: "02",
-    title: "Shortlist & Apply",
-    desc: "We narrow down universities and prepare every document your application needs.",
-  },
-  {
-    step: "03",
-    title: "Offer & Scholarship",
-    desc: "Compare offers, secure funding and confirm your final decision.",
-  },
-  {
-    step: "04",
-    title: "Visa & Departure",
-    desc: "Visa filing, pre-departure briefing and airport send-off — we stay with you till the gate.",
-  },
-];
-
-export const testimonials = [
-  {
-    name: "Aarav Shrestha",
-    dest: "MSc Data Science — University of Manchester",
-    quote:
-      "Global Times handled every deadline I would have missed on my own. The visa mock interview alone was worth it.",
-  },
-  {
-    name: "Priya Basnet",
-    dest: "BBA — University of Toronto",
-    quote:
-      "They found me a scholarship I didn't even know existed. Genuinely felt like someone was on my side.",
-  },
-  {
-    name: "Rohan Adhikari",
-    dest: "MEng — TU Munich",
-    quote:
-      "From shortlisting to the airport drop-off briefing, the process felt organized instead of overwhelming.",
-  },
 ];
 
 export type CountryDetail = {
@@ -445,30 +267,4 @@ export const faqCategories = [
   "Application",
   "Visa",
   "Scholarships",
-];
-
-export const successJourneys = [
-  { name: "Aarav Shrestha", test: "IELTS", score: "7.5", university: "University of Manchester", country: "United Kingdom", quote: "Global Times handled every deadline I would have missed on my own. The visa mock interview alone was worth it." },
-  { name: "Priya Basnet", test: "PTE", score: "76", university: "University of Toronto", country: "Canada", quote: "They found me a scholarship I didn't even know existed. Genuinely felt like someone was on my side." },
-  { name: "Rohan Adhikari", test: "Duolingo", score: "130", university: "TU Munich", country: "Germany", quote: "From shortlisting to the airport drop-off briefing, the process felt organized instead of overwhelming." },
-];
-
-export const trustSignals = [
-  "Government-Registered Education Consultancy",
-  "In-House Visa & Documentation Team",
-  "Dedicated Test-Prep Instructors",
-  "Operating Since 2026",
-];
-
-export const partnerLogos = [
-  "Manchester",
-  "Monash",
-  "Toronto",
-  "TU Munich",
-  "UNSW",
-  "Trinity College",
-  "Auckland",
-  "Waseda",
-  "McGill",
-  "Leeds",
 ];

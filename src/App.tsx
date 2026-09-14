@@ -15,6 +15,7 @@ import SuccessStories from "./pages/SuccessStories";
 import FAQPage from "./pages/FAQPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
+import AdminPage from "./pages/AdminPage";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
       </Route>
+      <Route path="/admin" element={<AdminPage />} />
     </Routes>
   );
 }
