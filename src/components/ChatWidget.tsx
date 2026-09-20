@@ -10,10 +10,26 @@ type ChatMessage = {
 
 const SESSION_STORAGE_KEY = "aiec_chat_session_id";
 
+/** crypto.randomUUID() is undefined in non-secure contexts (plain HTTP) and
+ * on older browsers. Calling it unguarded throws during render with no
+ * ErrorBoundary above this component, which crashes the entire page, not
+ * just the widget — this happened for real on http://app.edusathi.tech
+ * before HTTPS was set up. */
+function generateSessionId(): string {
+  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
+    return crypto.randomUUID();
+  }
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+    const r = (Math.random() * 16) | 0;
+    const v = c === "x" ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
+
 function getOrCreateSessionId(): string {
   const existing = sessionStorage.getItem(SESSION_STORAGE_KEY);
   if (existing) return existing;
-  const created = crypto.randomUUID();
+  const created = generateSessionId();
   sessionStorage.setItem(SESSION_STORAGE_KEY, created);
   return created;
 }
