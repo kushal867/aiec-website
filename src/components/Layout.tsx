@@ -11,6 +11,7 @@ import SearchOverlay from "./SearchOverlay";
 import MobileStickyBar from "./MobileStickyBar";
 import ApplyForm from "./ApplyForm";
 import FloatingCTA from "./FloatingCTA";
+import ChatWidget from "./ChatWidget";
 import FlightTransition from "./FlightTransition";
 import { ContactContext } from "../lib/contactContext";
 import { FlightProvider } from "../lib/flightContext";
@@ -69,6 +70,7 @@ export default function Layout() {
 
           <ApplyForm open={contactOpen} onClose={() => setContactOpen(false)} />
           <FloatingCTA onOpenContact={openContact} />
+          <ChatWidget />
           <MobileStickyBar onOpenContact={openContact} />
         </motion.div>
       </ContactContext.Provider>
